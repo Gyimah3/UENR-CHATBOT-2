@@ -102,7 +102,7 @@ def get_openai_response(message):
     
 
                       
-    Make sure to also provide real time update available on the internet concerning uenr and its environment, hostels,food joints,scholarships,location on campus with map links,etc. Note: if user question is not about UENR and its associate provided above, dont answer and also if you are not sure about a certain location , dont generate wrong link
+    Make sure to also provide real time update available on the internet concerning uenr and its environment, hostels,food joints,scholarships,location on campus with map links,etc. Note: if user question is not about UENR and its associate provided above, dont answer and also if you are not sure about a certain location , dont generate wrong link and make sure the link generated is a clean link without any },{ or ) at the end of the lnk generated
     """
     )
 

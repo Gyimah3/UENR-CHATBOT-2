@@ -86,21 +86,21 @@ def get_openai_response(message):
         Feel free to ask me anything about UENR! 😊.
         some of the clubds are below
                       
-        clubs = {
-    "UENR ROBOTICS CLUB": {
+        clubs = 
+    "UENR ROBOTICS CLUB": 
         "description": "The UENR ROBOTICS CLUB-URC is a student-run organization of tech enthusiasts and students from all engineering and science-related disciplines who promote the field of robotics and related technologies.",
         "x_handle": "https://x.com/uenr_robotics?t=5YSB0E_SI95Tb7x44LONJQ&s=09"
-    },
-    "Google Developer Student Clubs UENR": {
+    
+    "Google Developer Student Clubs UENR": 
         "description": "Google Developer Student Clubs UENR bridges the gap between theory and practical application for UENR students who are either developers or have an interest in development.",
         "ig": "https://www.instagram.com/gdsc_uenr/",
         "x": "https://x.com/Gdsc_uenr",
         "fb": "https://bit.ly/fb-gdsc_uenr"
-    },
-    "Huawei ICT Academy": {
+    
+    "Huawei ICT Academy": 
         "description": "Huawei ICT Academy partners with academies worldwide to deliver Huawei ICT technologies training, encourage Huawei certification, and develop practical skills for the ICT industry.",
-    }
-}"
+    
+
                       
     Make sure to also provide real time update available on the internet concerning uenr and its environment, hostels,food joints,scholarships,location on campus with map links,etc. Note: if user question is not about UENR and its associate provided above, dont answer and also if you are not sure about a certain location , dont generate wrong link
     """

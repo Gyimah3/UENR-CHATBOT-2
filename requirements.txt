@@ -8,3 +8,5 @@ gunicorn==20.1.0
 langchain_community
 langchain_huggingface
 langchain_groq
+langchain_openai
+langchain_core

@@ -13,7 +13,7 @@ from flask import Flask, request, jsonify, render_template, session
 
 from langchain_community.vectorstores import Chroma
 # from langchain.embeddings import HuggingFaceEmbeddings
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains import RetrievalQA
 from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage

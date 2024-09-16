@@ -6,6 +6,5 @@ google-generativeai
 Werkzeug==2.0.1
 gunicorn==20.1.0
 langchain_community
-langchain_huggingface
 langchain_openai
 langchain_core

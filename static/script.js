@@ -32,7 +32,14 @@ document.addEventListener('DOMContentLoaded', function() {
         chatBox.appendChild(userMessageElement);
         chatBox.scrollTop = chatBox.scrollHeight;
 
+        // Add loading indicator
+        const loadingElement = createLoadingElement();
+        chatBox.appendChild(loadingElement);
+        chatBox.scrollTop = chatBox.scrollHeight;
+
         fetchChatbotResponse(message, function(botMessage) {
+            // Remove loading indicator
+            chatBox.removeChild(loadingElement);
             typeWriterEffect(botMessage, chatBox);
         });
     }
@@ -49,24 +56,23 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            // Check if the response contains a link
-            if (data.response.includes("http")) {
-                // Extract the link and text
-                const linkMatch = data.response.match(/(.*)(https?:\/\/[^\s]+)(.*)$/);
-                if (linkMatch) {
-                    const [, beforeLink, link, afterLink] = linkMatch;
-                    const formattedResponse = `${beforeLink}<a href="${link}" target="_blank">${link}</a>${afterLink}`;
-                    callback(formattedResponse);
-                } else {
-                    callback(data.response);
-                }
-            } else {
-                callback(data.response);
-            }
+            const formattedResponse = formatLinks(data.response);
+            callback(formattedResponse);
         })
         .catch(error => {
             console.error('Error:', error);
             callback('Sorry, I am unable to respond at the moment. Please try again later.');
+        });
+    }
+
+    function formatLinks(text) {
+        // Regular expression to match URLs, including those in square brackets
+        const urlRegex = /\[([^\]]+)\]\((https?:\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])\)/gi;
+
+        return text.replace(urlRegex, function(match, linkText, url) {
+            // Remove any trailing punctuation from the URL
+            url = url.replace(/[.,;:!?]$/, '');
+            return `<a href="${url}" target="_blank">${linkText}</a>`;
         });
     }
 
@@ -89,6 +95,16 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         return element;
     }
+
+    function createLoadingElement() {
+        const element = document.createElement('li');
+        element.classList.add('chat', 'incoming', 'loading');
+        element.innerHTML = `
+            <img src="https://newsnowgh.com/wp-content/uploads/2020/11/University-of-Energy-and-Natural-Resources-UENR.jpg" alt="UENR Logo" class="bot-icon">
+            <p>Thinking...</p>
+        `;
+        return element;
+    }
     
     function sanitizeInput(input) {
         return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
@@ -105,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         function typeWriter() {
             if (index < message.length) {
-                if (message.substr(index, 4) === '<a h') {
+                if (message.substr(index, 3) === '<a ') {
                     // If we encounter a link, add the whole link at once
                     const closingTagIndex = message.indexOf('</a>', index) + 4;
                     textElement.innerHTML += message.substring(index, closingTagIndex);
@@ -166,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showNextSlide();
     }
 });
+
 
 
 

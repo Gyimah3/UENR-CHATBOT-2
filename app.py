@@ -13,7 +13,7 @@ from flask import Flask, request, jsonify, render_template, session
 
 from langchain_community.vectorstores import Chroma
 # from langchain.embeddings import HuggingFaceEmbeddings
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains import RetrievalQA
 from langchain_core.messages import BaseMessage, SystemMessage, HumanMessage
@@ -28,7 +28,7 @@ from langchain_community.document_loaders import TextLoader
 from langchain_core.messages import BaseMessage, HumanMessage, AIMessage, ToolMessage
 from langchain.tools import Tool
 from langchain.tools.retriever import create_retriever_tool
-from langchain_groq import ChatGroq
+# from langchain_groq import ChatGroq
 from langgraph.checkpoint.memory import MemorySaver
 # Initialize memory
 memory = MemorySaver()

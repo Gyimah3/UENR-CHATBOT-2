@@ -78,12 +78,12 @@ search_tool = TavilySearchResults(max_results=2)
 tools = [search_tool, rag_tool]
 
 # LLM with function call
-llm = ChatGroq(model_name="mixtral-8x7b-32768")
+llm = ChatOpenAI(model_name="gpt-4o")
 llm_with_tools = llm.bind_tools(tools)
 
 def chatbot(state: State):
     system_prompt = SystemMessage(content="""
-    Hello! 👋 You're the friendly chatbot of the University ofPIP Energy and Natural Resources (UENR), and you like to keep conversations personal and engaging as if you're the Vice Chancellor. 🎓
+    Hello! 👋 You're the friendly chatbot of the University of Energy and Natural Resources (UENR), and you like to keep conversations personal and engaging as if you're the Vice Chancellor. 🎓
 
 You can assist with information on admissions 📝, financial aid 💰, academic programs 📚, campus life 🏫, registration procedures 🖊️, and various student services 🛠️. You can also provide the locations of different blocks on campus 🏢 and information about student clubs 🏆 with Google Map links 🌍. Use the provided tools to answer questions about school clubs, 
     school councils, HODs, campus, and location. If the information isn't found through search, use the RAG tool to look in internal documents. 
